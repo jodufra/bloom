@@ -1,0 +1,131 @@
+html,
+body {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#bloom {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: #f2f2f2;
+}
+
+.branch {
+    position: absolute;
+    width: 8px;
+    height: 250px;
+    max-height: 25vh;
+    bottom: 0;
+    left: 50%;
+    background: #795548;
+    background: radial-gradient(#795548 33%, transparent 33%);
+    background-size: 8px 8px;
+    margin-left: -1px;
+    animation: growMainBranch ease-out 0.75s;
+    transform: none;
+}
+
+.branch>.branch {
+    width: 80%;
+    height: 66%;
+    bottom: 100%;
+    left: 25%;
+    margin-bottom: 4px;
+    transform: rotate(-60deg);
+    transform-origin: bottom right;
+    animation: growChildBranches ease-in-out 0.75s;
+}
+
+.branch>.branch+.branch {
+    height: 75%;
+    transform: rotate(0);
+    transform-origin: bottom center;
+    animation: growChildMiddleBranches ease-in-out 0.75s;
+}
+
+.branch>.branch+.branch+.branch {
+    height: 66%;
+    transform: rotate(60deg);
+    transform-origin: bottom left;
+    animation: growChildBranches ease-in-out 0.75s;
+}
+
+.petal,
+.petal:before,
+.petal:after {
+    position: absolute;
+    bottom: 75%;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    opacity: 0.6;
+    margin-right: -24px;
+    border-radius: 24px 0px;
+    background-color: #8bc34a;
+    border: 1px solid #7cb342;
+    animation: growPetals ease-out 0.45s;
+    transform: rotate(315deg);
+    transform-origin: center center;
+}
+
+.petal::before,
+.petal::after {
+    content: '';
+    bottom: -100%;
+    background: #4caf50;
+}
+
+.petal::before {
+    transform: rotate(60deg);
+    right: 100%;
+    top: 100%;
+}
+
+.petal::after {
+    transform: rotate(-60deg);
+    right: 200%;
+    top: 0%;
+}
+
+@keyframes growMainBranch {
+    from {
+        height: 0;
+    }
+    to {
+        height: 250px;
+    }
+}
+
+@keyframes growChildBranches {
+    from {
+        height: 0;
+    }
+    to {
+        height: 66%;
+    }
+}
+
+@keyframes growChildMiddleBranches {
+    from {
+        height: 0;
+    }
+    to {
+        height: 75%;
+    }
+}
+
+@keyframes growPetals {
+    from {
+        height: 0;
+        border-width: 0;
+    }
+    to {
+        height: 24px;
+        border-width: 1px;
+    }
+}
