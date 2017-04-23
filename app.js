@@ -1,14 +1,16 @@
 $(function() {
 
-    var templateBranchSingle = '<div class="branch"></div>';
-    var templateBranch = '<div class="branch"></div><div class="branch"></div><div class="branch"></div>';
+    var templateBranch = '<div class="branch"></div>';
+    var templateBranchs = templateBranch + templateBranch + templateBranch;
     var templatePetal = '<div class="petal"></div>';
-    var timer = 500;
+
+    var timer = 250;
     var maxCount = 4;
+
     var count = 0;
 
     function appendBranchs() {
-        $('.branch:not(:has(*))').html(templateBranch);
+        $('.branch:not(:has(*))').html(templateBranchs);
         count++;
         setAppendTimeout();
     }
@@ -25,6 +27,6 @@ $(function() {
         }
     }
 
-    $('#bloom').html(templateBranchSingle);
+    $('#bloom').html(templateBranch);
     setAppendTimeout();
 })();

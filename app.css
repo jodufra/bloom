@@ -26,7 +26,9 @@ body {
     background: radial-gradient(#795548 33%, transparent 33%);
     background-size: 8px 8px;
     margin-left: -1px;
-    animation: growMainBranch ease-out 0.75s;
+    animation-timing-function: ease-out;
+    animation-duration: 0.75s;
+    animation-name: growMainBranch;
     transform: none;
 }
 
@@ -38,21 +40,34 @@ body {
     margin-bottom: 4px;
     transform: rotate(-60deg);
     transform-origin: bottom right;
-    animation: growChildBranches ease-in-out 0.75s;
+    animation-timing-function: ease-in-out;
+    animation-name: growChildBranches;
 }
 
 .branch>.branch+.branch {
     height: 75%;
     transform: rotate(0);
     transform-origin: bottom center;
-    animation: growChildMiddleBranches ease-in-out 0.75s;
+    animation-name: growChildMiddleBranches;
 }
 
 .branch>.branch+.branch+.branch {
     height: 66%;
     transform: rotate(60deg);
     transform-origin: bottom left;
-    animation: growChildBranches ease-in-out 0.75s;
+    animation-name: growChildBranches;
+}
+
+.branch>.branch>.branch {
+    animation-duration: 1s;
+}
+
+.branch>.branch>.branch>.branch {
+    animation-duration: 1.25s;
+}
+
+.branch>.branch>.branch>.branch>.branch {
+    animation-duration: 1.50s;
 }
 
 .petal,
@@ -68,7 +83,7 @@ body {
     border-radius: 24px 0px;
     background-color: #8bc34a;
     border: 1px solid #7cb342;
-    animation: growPetals ease-out 0.45s;
+    animation: growPetals ease-out 1s;
     transform: rotate(315deg);
     transform-origin: center center;
 }
